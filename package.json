@@ -1,0 +1,39 @@
+{
+  "name": "dsh-privacychecker",
+  "version": "0.1.0",
+  "description": "操作前隐私审查（Pre-action Privacy Check）插件：在 Agent 关键操作真正执行前增加一道 PrivacyChecker 审查，输出 ALLOW/MODIFY/BLOCK。面向 DeepSeek Harness (DSH)。",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./prompts": "./lib/prompts/privacy-checker.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "privacy",
+    "privacychecker",
+    "pre-action",
+    "guardrail",
+    "agent-safety"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
