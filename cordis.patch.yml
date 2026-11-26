@@ -1,0 +1,21 @@
+# dsh-privacychecker —— DSH 插件装配声明（bundle）
+#
+# 用法：
+#   dsh web --patch ./cordis.patch.yml
+# 或安装进 ~/.dsh/plugins/ 后在 profile 的 cordis.patch.yml 中 insert。
+#
+# 说明：本插件挂载 DSH 的 tools/pre-execute 与 tools/post-execute 事件
+# （见 lib/index.js），不新增工具，因此无需额外配置。
+
+- insert:
+    - id: privacychecker
+      name: './lib/index.js'
+      # 可选配置（在 profile 的 cordis.patch.yml 中覆盖）：
+      # config:
+      #   privacychecker:
+      #     enabled: true
+      #     mode: enforce          # enforce 真拦截 | observe 只记录（用于评估对比）
+      #     blockRequiresApproval: false   # BLOCK 时是否转人工确认面板
+      #     onReviewFailure: fail-open      # 审查失败降级：fail-open | fail-closed
+      #     reviewTimeoutMs: 30000
+      #     maxReviewChars: 8000
